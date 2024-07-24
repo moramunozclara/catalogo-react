@@ -15,7 +15,7 @@ const ErrorPage = () => {
         <div>Ups, tuvimos un error
             <p>
                 {/* COMENTAR */}
-                { error ?.statusText || error?.message || "Pagina no encontrada|"}
+                { error?.statusText || error?.message || "Pagina no encontrada|"}
             </p>
         </div>
      );

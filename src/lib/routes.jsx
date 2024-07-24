@@ -12,13 +12,14 @@ import Catalogo from '../pages/Catalogo';
 import Producto from '../pages/Producto';
 
 import Layout from "../Layout";
+import ErrorPage from "../ErrorPage";
 
 // router tiene un array
 
 const router = createBrowserRouter([{
     path: '/',
     element: <Layout/>,
-    errorElement: <ErrorPage/>,
+    // errorElement: <ErrorPage/>,
     children: [ 
         {
             index: true,
@@ -32,6 +33,10 @@ const router = createBrowserRouter([{
             path: 'producto/:productoId',
             element: <Producto/>
         },
+        {
+            path: '*',
+            element: <ErrorPage/>
+        }
     ]
 
 }]);
