@@ -3,7 +3,10 @@
 // 3º Import el css
 
 import { Outlet } from "react-router-dom";
-// import './css/catalogo.css'
+import './css/catalogo.css'
+
+
+
 
 const Layout = () => {
     return ( 
