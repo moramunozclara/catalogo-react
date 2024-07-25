@@ -1,9 +1,17 @@
+import { useState, useEffect, useContext } from 'react';
+import {ModoOscuroContext} from '../Layout'
 
 
 // sfc
 
 const Home = () => {
-    return ( <h1>Estoy en Home</h1> );
+
+    // const [tema, setTema] = useContext(ModoOscuroContext);
+
+
+    
+    return ( <h1>Estoy en Home ({tema})
+    </h1> );
 }
  
 export default Home;
