@@ -1,7 +1,6 @@
 //1º sfc
 //2º importar params
 //3ºcrear constante antes del return para extraer elementos del useParams
-
 import { useParams } from "react-router-dom";
 
 const Producto = () => {

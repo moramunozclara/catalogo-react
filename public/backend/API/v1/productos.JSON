@@ -1,0 +1,56 @@
+{ 
+    "info": "",
+    "count": "",
+    "next": "",
+    "previous": null,
+    "results": [
+        {
+            "name": "Vertidos navales prestigiosos",
+            "description":"Este paquete exclusivo incluye:" ,
+            "services-list": [
+                "Sobornos a autoridades medioambientales",
+                "Manipulación de medios de comunicación para desviar la atención", 
+                "Compensaciones a las víctimas para evitar demandas",
+                "Neutralización de investigadores"
+            ],
+            "type": "Medioambiental",
+            "price": 800000000
+        },
+        {
+            "name": "Isla privada de silencio",
+            "description": "Evita que cualquier escándalo salga a la luz. Incluye:",
+            "services-list": "",
+            "type": "Ocio",
+            "price": 600000000
+        },    
+        {
+            "name": "Moda sin huella élite",
+            "description": "Protege tu empresa de moda de cualquier controversia por con condiciones laborales o evasiones fiscales. Este paquete exclusivo incluye:",
+            "services-list": "",
+            "type": ["Medioambiental", "Evasión"],
+            "price": 1200000000
+        },
+        {
+            "name": "Entrena a tu terrorista",
+            "description": "Proporciona entrenamiento y apoyo militar a grupos encubiertos sin dejar rastros. Este paquete incluye:",
+            "services-list": "",
+            "type": "",
+            "price": 2500000000
+        },
+        {
+            "name": "Pruebas nucleares discretas",
+            "description": "Realiza pruebas nucleares en otros países sin enfrentar repercusiones internacionales. Este paquete incluye:",
+            "services-list": "",
+            "type": ["Medioambiental", ""],
+            "price": 5000000000
+        },
+        {
+            "name": "Expansión portuaria sin límites",
+            "description": "Realiza expansiones portuarias sin enfrentarte a la oposición ecologista. Este paquete incluye:",
+            "services-list": "",
+            "type": ["Medioambiental", "Urbanismo"],
+            "price": 20000000
+        }
+        
+    ]
+}
