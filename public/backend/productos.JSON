@@ -1,0 +1,32 @@
+{ 
+    "info": "",
+    "count": "",
+    "next": "",
+    "previous": null,
+    "results": [
+        {
+            "name": ,
+            "description": ,
+            "services-list": ,
+            "type": ,
+            "price": ,
+            "name": ,
+        },
+        {
+            "name": ,
+            "description": ,
+            "services-list": ,
+            "type": ,
+            "price": ,
+            "name": ,
+        },    {
+            "name": ,
+            "description": ,
+            "services-list": ,
+            "type": ,
+            "price": ,
+            "name": ,
+        },
+        
+    ]
+}
