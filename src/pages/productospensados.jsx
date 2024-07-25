@@ -18,14 +18,14 @@ const productospensados = () => {
 
 
 
-1. Vertidos navales prestigiosos
+        1. Vertidos navales prestigiosos
         <li>Sobornos a autoridades medioambientales.</li>
         <li>Manipulación de medios de comunicación para desviar la atención.</li>
         <li>Compensaciones a las víctimas para evitar demandas.</li>
         <li>Eliminación de investigadores</li>
 
 
-        6. "Isla Privada de Silencio"
+        2. Isla privada de silencio
         Precio: €600,000,000
 
         Descripción:
@@ -38,38 +38,69 @@ const productospensados = () => {
 
 
 
-        8. "Moda Sin Huella Élite"
+        3. Moda sin huella élite
         Precio: €1,200,000,000
 
         Descripción:
-        Protege tu empresa de ropa multimillonaria de cualquier controversia relacionada con condiciones laborales abusivas y evasión fiscal. Este paquete exclusivo incluye:
+        Protege tu empresa de ropa de cualquier controversia relacionada con condiciones laborales y/o evasión fiscal. 
+        Este paquete incluye:
 
             Donaciones estratégicas de material médico y otras caridades en el país de evasión.
             Campañas de relaciones públicas que destacan tus contribuciones sociales.
-            Sobornos a inspectores laborales y fiscales en países tercermundistas.
-            Silenciamiento de periodistas y activistas críticos.
+            Sobornos a inspectores laborales y fiscales en países tercermundistas
+            Silenciamiento de periodistas y activistas críticos
 
 
 
-        11. "Entrena a tu terrorista"
+        4. Entrena a tu terrorista premium
         Precio: €2,500,000,000
 
         Descripción:
         Proporciona entrenamiento y apoyo militar a grupos encubiertos sin dejar rastros. 
-        Este paquete exclusivo incluye:
+        Este paquete incluye:
 
-        Entrenamiento militar avanzado:
-        Entrena a cientos de combatientes con técnicas de guerrilla y operaciones especiales.
-        Suministro de armamento y equipo militar de última generación.
-        Cobertura diplomática:
-        Protege tus operaciones con apoyo de embajadas y acuerdos internacionales.
-        Manipulación de medios:
-        Controla la narrativa mediática para justificar o encubrir tus acciones.
-        Fondos ocultos y transferencias bancarias encubiertas para financiar operaciones.
-        Logística y transporte de personal y equipos a zonas de conflicto.
-        Neutralización de periodistas y activistas
+            Entrenamiento militar avanzado con técnicas de guerrilla
+            Suministro de armamento de última generación
+            Transporte de personal a zonas de conflicto
+            Diseño de narrativas alternativas para justificar tus acciones
+            Apoyo de embajadas y acuerdos internacionales
+            Fondos ocultos y transferencias bancarias encubiertas
+            Neutralización de periodistas y activistas
             
 
+        5. Pruebas nucleares discretas
+        Precio: €5,000,000,000
+
+        Descripción:
+        Realiza pruebas nucleares en otros países sin enfrentar repercusiones internacionales. 
+        Este paquete incluye:
+        
+        Sobornos a líderes de gobiernos extranjeros y autoridades locales:
+        Diseño de narrativas alternativas para desviar la atención mediática
+        Neutralización de testigos
+        Protección diplomática anti-sanciones
+
+        18. "Expansión Portuaria Sin Límites"
+        Precio: €2,000,000,000
+
+        Descripción:
+        Realiza expansiones portuarias sin enfrentarte a la oposición ecologista. 
+        Este paquete incluye:
+
+            Sobornos a autoridades medioambientales y locales
+            Manipulación de estudios de impacto ambiental
+            Diseño de informes favorables y compensación ecológica falsa
+            Diseño de narrativas de beneficios por medio del turismo internacional
+
+        filtros:
+        Medioambiental
+        Escándalos 
+        Evasión Fiscal y Blanqueo
+        Política
+        Silenciamiento
+        Operaciones Militares y Terrorismo
+        Tecnología
+        Construcción / Urbanismo
 
 
 
