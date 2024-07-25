@@ -34,7 +34,7 @@
             "name": "Entrena a tu terrorista",
             "description": "Proporciona entrenamiento y apoyo militar a grupos encubiertos sin dejar rastros. Este paquete incluye:",
             "services-list": "",
-            "type": "",
+            "type": "Política",
             "price": 2500000000
         },
         {
@@ -50,7 +50,15 @@
             "services-list": "",
             "type": ["Medioambiental", "Urbanismo"],
             "price": 20000000
+        },
+        {
+            "name": "Museo del saqueo histórico deluxe",
+            "description": "Crea y expón tu colección de piezas de otras naciones adquiridas con métodos cuestionables, sin obligación de devolverlas. Este paquete incluye:",
+            "services-list": "",
+            "type": ["Cultural", "Política"],
+            "price": 15000000000
         }
+
         
     ]
 }
