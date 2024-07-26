@@ -8,3 +8,7 @@
 body {
  font-family: 'GohuFont', sans-serif;
 }
+
+.ProductContainer {
+    background-color: aqua;
+}

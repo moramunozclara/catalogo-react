@@ -36,13 +36,26 @@ const Catalogo = () => {
             <>
             <h2>Estoy en el Catálogo</h2>
             <ul>
-                {productos.map((producto => 
-                    <li key={producto.name}><h3>{producto.name}</h3>
-                    </li>))}
+                <li>
+                    {productos.map((producto) => (
+                    <li key={producto.name}>
+                    <div className='ProductContainer'>
+                        <p>{producto.name}</p>
+                        <p>{producto.description}</p>
+                        {/* <p>Servicios:</p> */}
+                        <ul>
+                            {producto.servicesList.map((service, index) => (
+                                <li key={index}>{service}</li>
+                            ))}
+                        </ul>
+                                                {/* <p>{producto.type}</p> */}
+                                                {/* <p>{producto.price}</p> */}
+                                            </div>
+                                </li>
+                    ))}
+                </li>
             </ul>
-            
             </>
-    
     );
 }
  
