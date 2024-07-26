@@ -52,13 +52,12 @@
             "price": 20000000
         },
         {
-            "name": "Museo del saqueo histórico deluxe",
+            "name": "Museo del saqueo histórico (deluxe)",
             "description": "Crea y expón tu colección de piezas de otras naciones adquiridas con métodos cuestionables, sin obligación de devolverlas. Este paquete incluye:",
             "services-list": "",
             "type": ["Cultural", "Política"],
             "price": 15000000000
         }
-
         
     ]
 }

@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import {ModoOscuroContext} from '../Layout'
+// import {ModoOscuroContext} from '../Layout'
 
 
 // sfc
@@ -10,7 +10,8 @@ const Home = () => {
 
 
     
-    return ( <h1>Estoy en Home ({tema})
+    return( <h1>Estoy en Home 
+        {/* ({tema}) */}
     </h1> );
 }
  

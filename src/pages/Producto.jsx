@@ -1,6 +1,8 @@
 //1º sfc
 //2º importar params
 //3ºcrear constante antes del return para extraer elementos del useParams
+
+// UseParams: es para obtener parámetros de la URL
 import { useParams } from "react-router-dom";
 
 const Producto = () => {
@@ -11,3 +13,4 @@ const Producto = () => {
 }
  
 export default Producto;
+
