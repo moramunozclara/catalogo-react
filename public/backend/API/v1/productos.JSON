@@ -5,6 +5,19 @@
     "previous": null,
     "results": [
         {
+            "name": "Isla privada del silencio",
+            "description": "Evita que cualquier escándalo salga a la luz, inspirado en la famosa mansión de un conocido magnate. Incluye:",
+            "servicesList": [
+                "Manipulación de registros de vuelo y viajes",
+                "Compra de testimonios y silenciamiento de testigos",
+                "Sobornos a las víctimas, autoridades locales e internacionales",
+                "Creación de fundaciones caritativas",
+                "Presión sobre los medios para evitar filtraciones"
+            ],
+            "type": "Ocio",
+            "price": 600000000
+        },
+        {
             "name": "Vertidos navales prestigiosos",
             "description":"Este paquete exclusivo incluye:" ,
             "servicesList": [
@@ -16,33 +29,23 @@
             "type": "Medioambiental",
             "price": 800000000
         },
-        {
-            "name": "Isla privada de silencio",
-            "description": "Evita que cualquier escándalo salga a la luz, inspirado en la famosa mansión de un conocido magnate. Incluye:",
-            "servicesList": [
-                "Manipulación de registros de vuelo y viajes.",
-                "Compra de testimonios y silenciamiento de testigos.",
-                "Sobornos a las víctimas, autoridades locales e internacionales.",
-                "Creación de fundaciones caritativas",
-                "Presión sobre los medios para evitar filtraciones"
-            ],
-            "type": "Ocio",
-            "price": 600000000
-        },    
+    
         {
             "name": "Moda sin huella élite",
-            "description": "Protege tu empresa de moda de cualquier controversia por con condiciones laborales o evasiones fiscales. Este paquete exclusivo incluye:",
+            "description": "Protege tu empresa de moda de cualquier controversia por con condiciones laborales o evasiones fiscales. Este paquete incluye:",
             "servicesList": [
-                "Donaciones estratégicas de material médico y otras caridades en el país de evasión.",
-                "Campañas de relaciones públicas que destacan tus contribuciones sociales.",
-                "Sobornos a inspectores laborales y fiscales en países tercermundistas."
+                "Donaciones de material médico y caritativas en el país de evasión",
+                "Campañas destacando tus contribuciones sociales",
+                "Certificaciones ambientales falsas",
+                "Creación de programas de reciclaje ficticios",
+                "Sobornos a inspectores laborales y fiscales en países tercermundistas"
             ],
             "type": ["Medioambiental", "Evasión"],
             "price": 1200000000
         },
         {
             "name": "Entrena a tu terrorista",
-            "description": "Proporciona entrenamiento y apoyo militar a grupos encubiertos sin dejar rastros. Este paquete incluye:",
+            "description": "Proporciona entrenamiento y apoyo militar a grupos encubiertos sin dejar rastro. Este paquete incluye:",
             "servicesList": [                "Entrenamiento militar avanzado con técnicas de guerrilla",
             "Suministro de armamento de última generación",
             "Diseño de acuerdos internacionales y narrativas mediáticas alternativas",
