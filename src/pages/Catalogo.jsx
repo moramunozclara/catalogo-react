@@ -7,7 +7,7 @@ import { CarritoContext } from '../Layout';
 // sfc
 const Catalogo = () => {
     const [productos, setProductos] = useState([]);
-    const {carrito, setCarrito, agregarCarrito} = useContext(CarritoContext);
+    const { carrito, agregarCarrito, eliminarDelCarrito } = useContext(CarritoContext);
     // const [filtro, setFiltro] = useState("");
     // const [errores, setErrores] = useState("");
     // const [info, setInfo] = useState({
@@ -33,6 +33,11 @@ const Catalogo = () => {
         getProductos();
         
     }, []);
+
+
+    const estaEnCarrito = (producto) => {
+        return carrito.some(item => item.name === producto.name);
+    };
     
     return ( 
             <>
@@ -40,29 +45,34 @@ const Catalogo = () => {
             <ul>
                 <li>
                     {productos.map((producto) => (
-                    <li key={producto.name}>
-                    <div className='ProductContainer'>
+                    <li key={producto.name} className={estaEnCarrito(producto) ? 'enCarrito' : ''}>
+                        <div className={`ProductContainer ${estaEnCarrito(producto) ? 'visible' : ''}`}>
                         <p>{producto.name}</p>
                         <p>{producto.description}</p>
                         {/* <p>Servicios:</p> */}
+                        
                         <ul>
                             {producto.servicesList.map((service, index) => (
                                 <li key={index}>
                                     {service}
-                                    {/* botón cambiar valor del carrito */}
-                                    <button onClick={() => agregarCarrito(producto)}>
-                                            Añadir al Carrito
-                                        </button>
                                 </li>
                             ))}
                         </ul>
+
+                            {/* botón cambiar valor del carrito */}
+                            <button onClick={() => {
+                                if (estaEnCarrito(producto)) {
+                                    eliminarDelCarrito(producto);
+                                } else {
+                                    agregarCarrito(producto);
+                                }
+                            }}>
+                                {estaEnCarrito(producto) ? "Eliminar del Carrito" : "Añadir al Carrito"}
+                            </button>
+                            
                     {/* <p>{producto.type}</p> */}
                     {/* <p>{producto.price}</p> */}
-                    <button onClick={() => {
-                        setCarrito(carrito.length === 0 ? ["añadir al carrito"] : []);
-                    }}>
-                        Cambiar valor del carrito: {carrito.length > 0 ? "eliminar del carrito" : "añadir al carrito"}
-                    </button>
+
                     </div>
                     </li>
                     ))}

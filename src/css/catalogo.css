@@ -8,7 +8,30 @@
 body {
  font-family: 'GohuFont', sans-serif;
 }
+.GridProductos {
+    display: grid;
+    background-color: red;
+    border: 10px solid brown;
+
+}
+
+
 
 .ProductContainer {
     background-color: aqua;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.enCarrito {
+    background-color: #d4edda; /* el producto está en el carrito */
+    border: 1px solid #28a745; /* resaltar el producto */
+    color: #155724; /* color del texto */
+}
+
+
+.visible {
+    display: block; 
 }

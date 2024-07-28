@@ -15,10 +15,15 @@ const Layout = () => {
         setCarrito([...carrito, producto]);
     };
 
+    const eliminarDelCarrito = (producto) => {
+        setCarrito(carrito.filter(item => item.name !== producto.name));
+    };
+    
+
 
     return ( 
 
-            <CarritoContext.Provider value={{carrito, setCarrito, agregarCarrito}}>
+            <CarritoContext.Provider value={{carrito, setCarrito, agregarCarrito, eliminarDelCarrito}}>
 
             <div>
                 <header>

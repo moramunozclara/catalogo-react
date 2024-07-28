@@ -11,9 +11,14 @@ const Carrito = () => {
     
         <div>
             <h2>Estoy en carrito</h2>
-            <ul>
+            <ul className="GridProductos">
                 {carrito.map((producto, index) => (
-                    <li key={index}>{producto.name}</li>
+                    <li key={index} className='ProductContainer'>
+                        <p>{producto.name}</p>
+                        <p>{producto.description}</p>
+                        {/* <p>{producto.price}</p> */}
+                   
+                </li>
                 ) ) }
             </ul>
         </div>
