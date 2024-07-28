@@ -10,6 +10,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Home from '../pages/Home';
 import Catalogo from '../pages/Catalogo';
 import Producto from '../pages/Producto';
+import Carrito from "../pages/Carrito";
 
 import Layout from "../Layout";
 import ErrorPage from "../ErrorPage";
@@ -33,6 +34,10 @@ const router = createBrowserRouter([{
             // COLOCAR LUEGO DE NUEVO path: 'producto/:productoId',
             path: 'producto',
             element: <Producto/>
+        },
+        {
+            path: 'carrito', //los children van sin barra pq ya trae path
+            element: <Carrito/>
         },
         {
             path: '*',

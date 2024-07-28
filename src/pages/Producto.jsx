@@ -4,7 +4,7 @@
 
 // UseParams: es para obtener parámetros de la URL
 import { useParams } from "react-router-dom";
-
+// import Layout from "../Layout";
 import {useState, useEffect} from 'react';
 
 

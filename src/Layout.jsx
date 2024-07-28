@@ -5,44 +5,38 @@ import { Outlet, } from "react-router-dom";
 import './css/catalogo.css'
 import {createContext, useState} from 'react' 
 
-export const CarritoContext = createContext("añadir al carrito");
-
-
+export const CarritoContext = createContext();
 
 const Layout = () => {
 
-    const [carrito, setCarrito] = useState("añadir al carrito");
+    const [carrito, setCarrito] = useState([]);
+
+    const agregarCarrito = (producto) => {
+        setCarrito([...carrito, producto]);
+    };
 
 
     return ( 
 
-                <CarritoContext.Provider value={carrito}>
+            <CarritoContext.Provider value={{carrito, setCarrito, agregarCarrito}}>
 
+            <div>
+                <header>
+                    <nav>
+                        Algo de nav
+                    </nav>
+                    <h1>Proyecto de catálogo con React</h1>
+                </header>
 
-        <div>
-            <header>
-                <nav>
-                    Algo de nav
-                </nav>
-                <h1>Proyecto de catálogo con React</h1>
-            </header>
+                <main>
+                    <Outlet/>
+                </main>
 
-            <main>
-                <Outlet/>
-            </main>
+            </div>
 
-            <button onClick={() => {
-                 setCarrito(carrito=="eliminar"?"añadir al carrito":"eliminar del carrito");
-            }}>
-                Cambiar valor del carrito: {carrito} 
-                </button>
+            </CarritoContext.Provider>
 
-        </div>
-
-             </CarritoContext.Provider>
-
-     
-    )
+    );
 }
  
 export default Layout;

@@ -1,11 +1,13 @@
 // Sección catálogo
 // import { useState } from 'react'
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useContext} from 'react';
 import Producto from './Producto';
+import { CarritoContext } from '../Layout';
 
 // sfc
 const Catalogo = () => {
     const [productos, setProductos] = useState([]);
+    const {carrito, setCarrito, agregarCarrito} = useContext(CarritoContext);
     // const [filtro, setFiltro] = useState("");
     // const [errores, setErrores] = useState("");
     // const [info, setInfo] = useState({
@@ -45,17 +47,29 @@ const Catalogo = () => {
                         {/* <p>Servicios:</p> */}
                         <ul>
                             {producto.servicesList.map((service, index) => (
-                                <li key={index}>{service}</li>
+                                <li key={index}>
+                                    {service}
+                                    {/* botón cambiar valor del carrito */}
+                                    <button onClick={() => agregarCarrito(producto)}>
+                                            Añadir al Carrito
+                                        </button>
+                                </li>
                             ))}
                         </ul>
-                                                {/* <p>{producto.type}</p> */}
-                                                {/* <p>{producto.price}</p> */}
-                                            </div>
-                                </li>
+                    {/* <p>{producto.type}</p> */}
+                    {/* <p>{producto.price}</p> */}
+                    <button onClick={() => {
+                        setCarrito(carrito.length === 0 ? ["añadir al carrito"] : []);
+                    }}>
+                        Cambiar valor del carrito: {carrito.length > 0 ? "eliminar del carrito" : "añadir al carrito"}
+                    </button>
+                    </div>
+                    </li>
                     ))}
                 </li>
             </ul>
             </>
+    
     );
 }
  
