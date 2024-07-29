@@ -42,8 +42,8 @@ const Catalogo = () => {
     return ( 
             <>
             <h2>Estoy en el Catálogo</h2>
-            <ul>
-                <li>
+            <ul className='GridProductos'>
+
                     {productos.map((producto) => (
                     <li key={producto.name} className={estaEnCarrito(producto) ? 'enCarrito' : ''}>
                         <div className={`ProductContainer ${estaEnCarrito(producto) ? 'visible' : ''}`}>
@@ -76,7 +76,7 @@ const Catalogo = () => {
                     </div>
                     </li>
                     ))}
-                </li>
+                
             </ul>
             </>
     
