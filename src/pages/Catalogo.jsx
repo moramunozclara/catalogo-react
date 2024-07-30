@@ -7,8 +7,6 @@ import { CarritoContext } from '../Layout';
 // sfc
 const Catalogo = () => {
     const [productos, setProductos] = useState([]);
-    const [filtro, setFiltro] = useState(''); // Estado para el filtro de tipo
-
     const { carrito, agregarCarrito, eliminarDelCarrito } = useContext(CarritoContext);
     // const [filtro, setFiltro] = useState("");
     // const [errores, setErrores] = useState("");
@@ -40,38 +38,13 @@ const Catalogo = () => {
     const estaEnCarrito = (producto) => {
         return carrito.some(item => item.name === producto.name);
     };
-
-
-    const handleFiltroChange = (event) => {
-        setFiltro(event.target.value);
-    };
-
-    const productosFiltrados = productos.filter(producto => {
-        if (filtro === '') {
-            return true; // No hay filtro, mostrar todos los productos
-        }
-        return producto.type.includes(filtro);
-    });
-
     
     return ( 
             <>
             <h2>Estoy en el Catálogo</h2>
-
-            <div>
-                <label htmlFor="filtro">Filtrar por tipo:</label>
-                <select id="filtro" value={filtro} onChange={handleFiltroChange}>
-                    <option value="">Todos</option>
-                    <option value="tipo1">Tipo 1</option>
-                    <option value="tipo2">Tipo 2</option>
-                    {/* Agrega más opciones de filtro según los tipos de producto en tu JSON */}
-                </select>
-            </div>
-
-
             <ul className='GridProductos'>
 
-                    {productosFiltrados.map((producto) => (
+                    {productos.map((producto) => (
                     <li key={producto.name} className={estaEnCarrito(producto) ? 'enCarrito' : ''}>
                         <div className={`ProductContainer ${estaEnCarrito(producto) ? 'visible' : ''}`}>
                         <p>{producto.name}</p>
