@@ -4,7 +4,9 @@ import { CarritoContext } from "../Layout"; // tomamos el contexto
 
 
 const Carrito = () => {
-    const { carrito } = useContext(CarritoContext); // accionamos el contexto
+    // const { carrito } = useContext(CarritoContext); 
+    const { carrito, agregarCarrito, eliminarDelCarrito } = useContext(CarritoContext);
+
 
     return ( 
         <>

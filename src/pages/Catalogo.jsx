@@ -9,7 +9,8 @@ const Catalogo = () => {
     const [productos, setProductos] = useState([]);
     const { carrito, agregarCarrito, eliminarDelCarrito } = useContext(CarritoContext);
     // const [filtro, setFiltro] = useState("");
-    // const [errores, setErrores] = useState("");
+
+    const [errores, setErrores] = useState("");
     // const [info, setInfo] = useState({
     //     count: 0,
     //     next: null,
@@ -17,19 +18,19 @@ const Catalogo = () => {
     //     pages: 0
     // });
         
+    const getProductos = async () => {
+        try {
+            const respuesta= await fetch('/backend/API/v1/productos.json');
+            const objeto = await respuesta.json();
+            setProductos(objeto.results);
+        }
+        catch (error) {
+            console.error('Error al obtener los productos:', error);
+        }
+    };
 
     useEffect(() => {
-        const getProductos = async () => {
-            try {
-                const respuesta= await fetch('/backend/API/v1/productos.json');
-                const objeto = await respuesta.json();
-                setProductos(objeto.results);
-            }
-            catch (error) {
-                console.error('Error al obtener los productos:', error);
-            }
-        };
-
+        
         getProductos();
         
     }, []);
@@ -45,8 +46,8 @@ const Catalogo = () => {
             <ul className='GridProductos'>
 
                     {productos.map((producto) => (
-                    <li key={producto.name} className={estaEnCarrito(producto) ? 'enCarrito' : ''}>
-                        <div className={`ProductContainer ${estaEnCarrito(producto) ? 'visible' : ''}`}>
+                    <li key={producto.name} >
+                        <div className={`ProductContainer`}>
                         <p>{producto.name}</p>
                         <p>{producto.description}</p>
                         {/* <p>Servicios:</p> */}
@@ -59,7 +60,7 @@ const Catalogo = () => {
                             ))}
                         </ul>
 
-                            {/* botón cambiar valor del carrito */}
+                            {/* botón del carrito */}
                             <button onClick={() => {
                                 if (estaEnCarrito(producto)) {
                                     eliminarDelCarrito(producto);

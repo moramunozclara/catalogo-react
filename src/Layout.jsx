@@ -28,6 +28,8 @@ const Layout = () => {
             <div>
                 <header>
                     <nav>
+
+                        {/* CREAR EL NAV CON LAS RUTAS. SIN ELLO EL CARRITO NO ALMACENA NADA */}
                         Algo de nav
                     </nav>
                     <h1>Proyecto de catálogo con React</h1>

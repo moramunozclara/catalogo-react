@@ -10,7 +10,7 @@ const Home = () => {
 
 
     
-    return( <h1>Estoy en Home 
+    return( <h1>////Estoy en Home 
         {/* ({tema}) */}
     </h1> );
 }
