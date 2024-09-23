@@ -20,7 +20,7 @@ const Catalogo = () => {
         
     const getProductos = async () => {
         try {
-            const respuesta= await fetch('/backend/API/v1/productos.json');
+            const respuesta= await fetch('/backend/API/v1/productos.JSON');
             const objeto = await respuesta.json();
             setProductos(objeto.results);
         }

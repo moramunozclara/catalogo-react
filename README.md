@@ -1,10 +1,10 @@
 Frontend (React)
-    Mantener todas las funcionalidades anteriores del catálogo y carrito de compras.
+    ✅ Mantener todas las funcionalidades anteriores del catálogo y carrito de compras.
     ✅ Implementar un formulario de registro de usuarios.  (falta NOMBRE)
-    Formulario con campos: nombre, email, checkbox de TyC y contraseña.
+    ✅      Formulario con campos: nombre, email, checkbox de TyC y contraseña.
 
-    ✅ Implementar un formulario de inicio de sesión. (falta NOMBRE)
-    Formulario con campos: email y contraseña.
+    ✅ Implementar un formulario de inicio de sesión.
+    ✅      Formulario con campos: email y contraseña.
 
     Crear una interfaz para agregar nuevos productos al catálogo, incluyendo la subida de imágenes.
     Utilizar localStorage para mantener la sesión del usuario.

@@ -92,8 +92,9 @@ const Login = () => {
             {/* input de User / Usuario */}
             <Input 
                 name="user"
-                label="Usuario:"
+                label="Usuario:" // en español (es la parte visible)
                 type="text"
+                autocomplete="username"
 
                 value={formData.user}
                 onChange={handleChange}
@@ -106,8 +107,9 @@ const Login = () => {
             {/* input de Password / Contraseña  */}
             <Input 
                 name="password"
-                label="Contraseña"
+                label="Contraseña" // en español (es la parte visible)
                 type="password"
+                autocomplete="current-password"
                 
                 value={formData.password}
                 onChange={handleChange}

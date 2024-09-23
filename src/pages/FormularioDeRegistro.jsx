@@ -19,7 +19,9 @@ const FormularioDeRegistro = () => {
 
         // formData = todos los datos de mi formulario
     const [formData, setFormData] = useState({
-        user: "",
+        nombre: "",
+        apellido: "",
+        email: "",
         password: "",
         aceptaTerminos: "",
     });
@@ -31,14 +33,14 @@ const FormularioDeRegistro = () => {
     const validateSignUpForm = () => {
         const objetoErrores = {};
         // hacer nuestras comprobaciones.
-        if(!formData.user) objetoErrores.user="Debes ingresar un usuario";
+        if(!formData.nombre) objetoErrores.nombre="Debes ingresar tu nombre";
+        if(!formData.apellido) objetoErrores.apellido="Debes ingresar tu apellido";
+        if(!formData.email) objetoErrores.email="Debes ingresar un email";
         if(!formData.password) objetoErrores.password="Debes ingresar una contraseña";
         if(!formData.aceptaTerminos) objetoErrores.aceptaTerminos="Debes aceptar Términos y condiciones";
 
         else { navigate('/catalogo') }
-
-
-
+        
         return objetoErrores;
     }
 
@@ -82,18 +84,50 @@ const FormularioDeRegistro = () => {
         <>
         <h2>Formulario de registro</h2>
 
+
+
+
         <form onSubmit={handleSubmit}>
 
-            {/* input de User / Usuario */}
+            {/* input de name / Nombre */}
             <Input 
-                name="user"
-                label="Usuario:"
+                name="nombre"
+                label="Nombre:"  // en español (es la parte visible)
                 type="text"
+                autocomplete="given-name"
 
-                value={formData.user}
+                value={formData.nombre}
                 onChange={handleChange}
 
-                error={errores.user}
+                error={errores.nombre}
+                className="textRed"
+                // debug={true}
+            />
+            {/* input de Surname / S */}
+            <Input 
+                name="surname"
+                label="Apellido:" // en español (es la parte visible)
+                type="text"
+                autocomplete="family-name"
+
+                value={formData.surname}
+                onChange={handleChange}
+
+                error={errores.surname}
+                className="textRed"
+                // debug={true}
+            />            
+            {/* input de email / Correo electrónico */}
+            <Input 
+                name="email"
+                label="Email:"  // en español (es la parte visible)
+                type="email"
+                autocomplete="email"
+
+                value={formData.email}
+                onChange={handleChange}
+
+                error={errores.email}
                 className="textRed"
                 // debug={true}
             />
@@ -101,7 +135,7 @@ const FormularioDeRegistro = () => {
             {/* input de Password / Contraseña  */}
             <Input 
                 name="password"
-                label="Contraseña"
+                label="Contraseña:"  // en español (es la parte visible)
                 type="password"
                 
                 value={formData.password}
@@ -112,7 +146,7 @@ const FormularioDeRegistro = () => {
 
             <Checkbox
                 name="aceptaTerminos"
-                label="Acepta Términos:"
+                label="Acepta Términos:"  // en español (es la parte visible)
                 type="checkbox"
 
                 value={formData.aceptaTerminos}
@@ -121,8 +155,6 @@ const FormularioDeRegistro = () => {
                 error={errores.aceptaTerminos}
                 className="textRed"
                 // debug={true}
-            
-            
             />
 
 
