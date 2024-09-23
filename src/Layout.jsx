@@ -1,7 +1,7 @@
 //1º sfc
 // 2º Import el OUTLET y meterlo en el MAIN
 // 3º Import el css
-import { Outlet, } from "react-router-dom";
+import { Outlet, NavLink } from "react-router-dom";
 import './css/catalogo.css'
 import {createContext, useState} from 'react' 
 
@@ -31,6 +31,14 @@ const Layout = () => {
 
                         {/* CREAR EL NAV CON LAS RUTAS. SIN ELLO EL CARRITO NO ALMACENA NADA */}
                         Algo de nav
+
+                        <NavLink>Login</NavLink>
+                        <ul>
+                        <li><NavLink to="/">Login</NavLink></li>
+                        <li><NavLink to="/registro">Registro</NavLink></li>
+                        <li><NavLink to="/carrito">Carrito</NavLink></li>
+
+                        </ul>
                     </nav>
                     <h1>Proyecto de catálogo con React</h1>
                 </header>

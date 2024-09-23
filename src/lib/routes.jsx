@@ -7,10 +7,13 @@
 
 import { createBrowserRouter } from "react-router-dom";
 
-import Home from '../pages/Home';
+// import Home from '../pages/Home';
 import Catalogo from '../pages/Catalogo';
 import Producto from '../pages/Producto';
 import Carrito from "../pages/Carrito";
+import FormularioDeRegistro from "../pages/FormularioDeRegistro";
+import Login from "../pages/Login";
+
 
 import Layout from "../Layout";
 import ErrorPage from "../ErrorPage";
@@ -24,8 +27,16 @@ const router = createBrowserRouter([{
     children: [ 
         {
             index: true,
-            element: <Home/>
+            element: <Login/>
         },
+        {
+            path: 'registro', //los children van sin barra pq ya trae path
+            element: <FormularioDeRegistro/>
+        },
+        // {
+        //     path: 'login', //los children van sin barra pq ya trae path
+        //     element: <Login/>
+        // },
         {
             path: 'catalogo', //los children van sin barra pq ya trae path
             element: <Catalogo/>

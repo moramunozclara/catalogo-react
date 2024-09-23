@@ -12,7 +12,7 @@ const Carrito = () => {
         <>
     
         <div>
-            <h2>Estoy en carrito</h2>
+            <h1>🤩 Estoy en carrito 🤩 </h1>
             <ul className="GridProductos">
                 {carrito.map((producto, index) => (
                     <li key={index} className='ProductContainer'>
