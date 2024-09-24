@@ -72,10 +72,9 @@ const FormularioDeRegistro = () => {
         }
 
         // setFormData({ ...formData, [name]:value });
-        setFormData( prevData => ({ ...prevData, [name]: value}));
+        // setFormData( prevData => ({ ...prevData, [name]: value}));
+        setFormData ( {...formData, [name]: value} ); /// es correcto??
 
-        // Limpiar error cuando el usuario empieza a escribir/seleccionar
-        setErrores( prevErrores => ({ ...prevErrores, [name]: ""}))
 
     }
 
@@ -143,7 +142,8 @@ const FormularioDeRegistro = () => {
                 error={errores.password}
                 //debug={true}
             />
-
+            
+            {/* casilla de Acepta Términos y Condiciones  */}
             <Checkbox
                 name="aceptaTerminos"
                 label="Acepta Términos:"  // en español (es la parte visible)

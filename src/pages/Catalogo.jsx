@@ -7,6 +7,13 @@ import { CarritoContext } from '../Layout';
 // sfc
 const Catalogo = () => {
     const [productos, setProductos] = useState([]);
+
+    const [nuevoProducto, setNuevoProducto] = useState({
+        name:"",
+        description:"",
+        servicesList: {}
+    });
+
     const { carrito, agregarCarrito, eliminarDelCarrito } = useContext(CarritoContext);
     // const [filtro, setFiltro] = useState("");
 
@@ -39,6 +46,25 @@ const Catalogo = () => {
     const estaEnCarrito = (producto) => {
         return carrito.some(item => item.name === producto.name);
     };
+
+    
+
+    const handleChange = (e) => {
+        let {name, value} = e.target;
+
+
+        if(e.target.type == "checkbox"){
+            value = e.target.checked;
+            console.log("Checkbox value es:", value);
+        }
+
+        // setFormData({ ...formData, [name]:value });
+        setFormData( prevData => ({ ...prevData, [name]: value}));
+
+        // Limpiar error cuando el usuario empieza a escribir/seleccionar
+        setErrores( prevErrores => ({ ...prevErrores, [name]: ""}))
+
+    }
     
     return ( 
             <>

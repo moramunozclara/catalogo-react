@@ -16,26 +16,12 @@ const Login = () => {
     
         // formData = todos los datos de mi formulario
         const [formData, setFormData] = useState({
-            user: "",
+            email: "",
             password: "",
         });
         const [errores, setErrores] = useState ({});
     
     // ---------------------------------------
-
-    // const handleSubmit = (e) => {
-
-    //     e.preventDefault();
-        
-    //     // Validación: asegurarse de que user y password tengan más de 0 caracteres
-    //     if (formData.user.length > 0 && formData.password.length > 0) {
-    //       // Redirigir a la página de Home si la longitud es mayor que 0
-    //       navigate('/home');
-    //     } else {
-    //       // Mostrar un mensaje de error si alguno de los campos está vacío
-    //       alert('Por favor, ingresa un usuario y una contraseña válidos');
-    //     }
-    
 
         const handleSubmit = (e) => {
             e.preventDefault();
@@ -43,7 +29,6 @@ const Login = () => {
     
             // si existe algún error, guardarlo en errores
             // si no, mostrar resultado por consola
-    
     
             // INFORME DE LOS DATOS EN LA CONSOLA CUANDO NO HAYA ERRORES
             if( Object.keys(listaErrores).length === 0 ){
@@ -58,17 +43,17 @@ const Login = () => {
         const handleChange = (e) => {
             let {name, value} = e.target;
     
-    
+
             if(e.target.type == "checkbox"){
                 value = e.target.checked;
                 console.log("Checkbox value es:", value);
             }
     
-            // setFormData({ ...formData, [name]:value });
-            setFormData( prevData => ({ ...prevData, [name]: value}));
-    
+            setFormData({ ...formData, [name]:value });
+
+            // setFormData( prevData => ({ ...prevData, [name]: value}));
             // Limpiar error cuando el usuario empieza a escribir/seleccionar
-            setErrores( prevErrores => ({ ...prevErrores, [name]: ""}))
+            // setErrores( prevErrores => ({ ...prevErrores, [name]: ""}))
     
         }
 
@@ -91,15 +76,15 @@ const Login = () => {
 
             {/* input de User / Usuario */}
             <Input 
-                name="user"
-                label="Usuario:" // en español (es la parte visible)
-                type="text"
-                autocomplete="username"
+                name="email"
+                label="Correo electrónico:" // en español (es la parte visible)
+                type="email"
+                autocomplete="email"
 
-                value={formData.user}
+                value={formData.email}
                 onChange={handleChange}
 
-                error={errores.user}
+                error={errores.email}
                 className="textRed"
                 // debug={true}
             />
