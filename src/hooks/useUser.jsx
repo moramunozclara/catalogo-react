@@ -1,3 +1,4 @@
+// importar contexto
 import { createContext, useContext, useState, useEffect } from "react";
 
 // crear un contexto de usuario
@@ -9,13 +10,38 @@ export function UserProvider({children}) {
     
         const [user, setUser] = useState(null);
 
-        const login = (data) => {
+        const login = async (userData) => {
+
+
             console.log("Estoy en login");
-            setUser(data)
+            setUser(userData)
+
+
+            const response = await fetch(`${VITE_API_URL}/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                    // Authorization
+                 },
+                 body: JSON.stringify(userData)
+            });
+
+            const response = await response.json();
+                                    JSON.parse(response);
+
+                                    localStorage.setItem("user", JSON.stringify(responseData));
+
+
+
+
+
+
+
+
+
         }
         const register = () => {
             console.log("Estoy en registro")
-
 
         }
         const logout = () => {

@@ -13,10 +13,15 @@ import Producto from '../pages/Producto';
 import Carrito from "../pages/Carrito";
 import FormularioDeRegistro from "../pages/FormularioDeRegistro";
 import Login from "../pages/Login";
+import Admin from "../pages/Admin";
+import Home from "../pages/Home";
+
+
 
 
 import Layout from "../Layout";
 import ErrorPage from "../ErrorPage";
+import PrivateRoute from "../components/PrivateRoute";
 
 // router tiene un array
 
@@ -30,9 +35,28 @@ const router = createBrowserRouter([{
             element: <Login/>
         },
         {
-            path: 'registro', //los children van sin barra pq ya trae path
-            element: <FormularioDeRegistro/>
+            path: 'home', //los children van sin barra pq ya trae path
+            element: <Home/>
         },
+        {
+            path: 'login', //los children van sin barra pq ya trae path
+            element: <Login/>
+        },
+        {
+            path: 'registro', //los children van sin barra pq ya trae path
+            element: <PrivateRoute> <FormularioDeRegistro/> </PrivateRoute>
+        },
+
+
+
+        
+        {
+            path: 'admin', //los children van sin barra pq ya trae path
+            element: <Admin/>
+        },
+
+
+
         // {
         //     path: 'login', //los children van sin barra pq ya trae path
         //     element: <Login/>

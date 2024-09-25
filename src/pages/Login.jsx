@@ -6,6 +6,8 @@ import {Input} from '../components/FormComponents';
 import {BrowserRouter as Router, Route, Link, NavLink, Routes} from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 
+import { useUser } from '../hooks/useUser';
+
 
 
 const Login = () => {
@@ -67,6 +69,8 @@ const Login = () => {
             return objetoErrores;
         }
     
+
+        // const {login, user}=useUser();
     
     return ( 
         <>
