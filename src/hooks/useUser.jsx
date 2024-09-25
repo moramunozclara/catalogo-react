@@ -11,10 +11,8 @@ export function UserProvider({children}) {
         const [user, setUser] = useState(null);
 
         const login = async (userData) => {
-
-
             console.log("Estoy en login");
-            setUser(userData)
+            setUser(userData);
 
 
             const response = await fetch(`${VITE_API_URL}/login`, {
@@ -26,26 +24,42 @@ export function UserProvider({children}) {
                  body: JSON.stringify(userData)
             });
 
-            const response = await response.json();
-                                    JSON.parse(response);
+            // 1º: parsear la respuesta a JSON
+            const responseData = await response.json();
+                                    // JSON.parse(response);
 
-                                    localStorage.setItem("user", JSON.stringify(responseData));
-
-
-
-
-
-
-
-
-
+                                // 2º: guardar respuesta en localStorage
+                                localStorage.setItem("user", JSON.stringify(responseData));
         }
-        const register = () => {
+
+
+        const register = async (userData) => {
             console.log("Estoy en registro")
 
-        }
+            const response = await fetch(`${VITE_API_URL}/registro`, {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(userData)
+            });
+
+            // 1º: parsear la respuesta a JSON
+            const responseData = await response.json();
+                                    // JSON.parse(response);
+
+                                // 2º: guardar respuesta en localStorage
+                                localStorage.setItem("user", JSON.stringify(responseData));
+
+        };
+
+        
         const logout = () => {
-            console.log("Estoy en salir")
+            console.log("Estoy en salir");
+            localStorage.removeItem("user");    // borrar item user
+            setUser(null);                      // borrar item user
+
+
 
         }
 
@@ -53,7 +67,7 @@ export function UserProvider({children}) {
         <UserContext.Provider value={{user, login, register, logout}}>
         {children}
         </UserContext.Provider>
- )
+ );
 }
 
 //  crear un Custom Hook para usar nuestro contexto de usuario
