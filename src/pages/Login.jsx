@@ -9,10 +9,12 @@ import { useNavigate } from 'react-router-dom';
 import { useUser } from '../hooks/useUser';
 
 
-
 const Login = () => {
 
     const navigate = useNavigate();
+
+    const { login } = useUser(); 
+
 
     // __________________________________________
     
@@ -30,35 +32,47 @@ const Login = () => {
             const listaErrores = validateLoginForm();
     
             // si existe algún error, guardarlo en errores
-            // si no, mostrar resultado por consola
+            // si no, mostrar resultado por consola Y EJECUTAR LOGIN
     
             // INFORME DE LOS DATOS EN LA CONSOLA CUANDO NO HAYA ERRORES
             if( Object.keys(listaErrores).length === 0 ){
                 console.log("Datos del formulario:", formData);
+                            
+                // función login para actualizar el estado de 'user'
+                login(formData)  // Actualiza el estado con los datos del usuario                
+                .then(() => {
+                    navigate('/catalogo');  // CAMBIO AQUÍ
+                })
+                .catch((error) => {
+                    setErrores({ email: "Credenciales inválidas", password: "" });  // CAMBIO AQUÍ
+                });
+
             } else {
-            // AVISO EN LA CONSOLA CUANDO HAYA UN ERROR ((NO LO VERÁ EL USUARIO))
-                console.log("Errores encontrados:", listaErrores);
-                setErrores(listaErrores);
-            }
+                // AVISO EN LA CONSOLA CUANDO HAYA UN ERROR ((NO LO VERÁ EL USUARIO))
+                    console.log("Errores encontrados:", listaErrores);
+                    setErrores(listaErrores);
+
+                }
         }
+
     
         const handleChange = (e) => {
-            let {name, value} = e.target;
+            const {name, value} = e.target;
     
 
-            if(e.target.type == "checkbox"){
-                value = e.target.checked;
-                console.log("Checkbox value es:", value);
-            }
+            // if(e.target.type === "checkbox"){
+            //     value = e.target.checked;
+            //     console.log("Checkbox value es:", value);
+            // }
     
             setFormData({ ...formData, [name]:value });
 
             // setFormData( prevData => ({ ...prevData, [name]: value}));
             // Limpiar error cuando el usuario empieza a escribir/seleccionar
             // setErrores( prevErrores => ({ ...prevErrores, [name]: ""}))
-    
         }
 
+        
         const validateLoginForm = () => {
             const objetoErrores = {};
             // hacer nuestras comprobaciones.

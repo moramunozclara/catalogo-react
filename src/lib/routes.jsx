@@ -44,17 +44,13 @@ const router = createBrowserRouter([{
         },
         {
             path: 'registro', //los children van sin barra pq ya trae path
-            element: <PrivateRoute> <FormularioDeRegistro/> </PrivateRoute>
+            element:<FormularioDeRegistro/>
         },
 
-
-
-        
         {
             path: 'admin', //los children van sin barra pq ya trae path
-            element: <Admin/>
+            element: <PrivateRoute> <Admin/> </PrivateRoute>
         },
-
 
 
         // {

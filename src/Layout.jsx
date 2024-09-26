@@ -5,7 +5,13 @@ import { Outlet, NavLink } from "react-router-dom";
 import './css/catalogo.css';
 import {createContext, useState} from 'react' ;
 import Header from "./components/Header";
-;
+
+
+const VITE_API_URL = import.meta.env.VITE_API_URL;
+
+
+
+
 export const CarritoContext = createContext();
 
 const Layout = () => {

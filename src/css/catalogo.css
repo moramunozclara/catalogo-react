@@ -29,13 +29,20 @@
     color: #535bf2;
   }
   
-  body {
+  /* body {
     margin: 0;
     display: flex;
     place-items: center;
     min-width: 320px;
     min-height: 100vh;
-  }
+  } */
+
+
+  html, body {
+    margin: 0; /* Elimina márgenes en el documento */
+    padding: 0; /* Elimina padding en el documento */
+    width: 100%; /* Asegura que el body ocupa todo el ancho */
+}
   
   h1 {
     font-size: 3.2em;
@@ -127,3 +134,23 @@ body {
 input {
   border: 1px solid black;
 }
+
+.HeaderNav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  gap: 2rem;
+}
+
+.HeaderUl {
+  display: flex;
+  flex-direction: row;
+  background-color: yellow;
+  /* align-content: space-between; */
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+
+;
+} 

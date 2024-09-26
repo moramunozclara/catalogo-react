@@ -7,7 +7,9 @@ Frontend (React)
     ✅      Formulario con campos: email y contraseña.
 
     Crear una interfaz para agregar nuevos productos al catálogo, incluyendo la subida de imágenes.
-    Utilizar localStorage para mantener la sesión del usuario.
+
+
+    ✅Utilizar localStorage para mantener la sesión del usuario.
     Si el usuario no esta validado no puede acceder a su carrito.
 
 Backend (Express)
