@@ -1,8 +1,6 @@
 // importar contexto
 import { createContext, useContext, useState, useEffect } from "react";
 
-const VITE_API_URL = import.meta.env.VITE_API_URL;  // CAMBIO AQUÍ
-
 
 // crear un contexto de usuario
 const UserContext = createContext();
@@ -13,71 +11,76 @@ export function UserProvider({children}) {
     
         const [user, setUser] = useState(null);
 
-
-
-
+        const {VITE_API_URL} = import.meta.env;  // CAMBIO AQUÍ. por que con llaves???
 
         // Al cargar la aplicación, intentamos obtener el usuario del localStorage
-        useEffect(() => {  // CAMBIO AQUÍ
-            const storedUser = localStorage.getItem('user');  // CAMBIO AQUÍ
+        useEffect(() => {
+            const storedUser = localStorage.getItem('user');
             if (storedUser) {  
-                setUser(JSON.parse(storedUser));  // CAMBIO AQUÍ
+                setUser(JSON.parse(storedUser));
             }
         }, []); // Solo corre una vez cuando el componente se monta
 
+/*______________________________________________________________________________*/
 
-
-
-        // const login = async (userData) => {
-        //     console.log("Estoy en login");
-        //     setUser(userData);                  // Guardar usuario en estado local
-
-
-        //     const response = await fetch(`${VITE_API_URL}/login`, {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-type': 'application/json'
-        //             // Authorization
-        //          },
-        //          body: JSON.stringify(userData)
-        //     });
-
-        //     // 1º: parsear la respuesta a JSON
-        //     const responseData = await response.json();
-        //                             // JSON.parse(response);
-
-        //                         // 2º: guardar respuesta en localStorage
-        //                         localStorage.setItem("user", JSON.stringify(responseData));
-        // }
-
-// 2º metodo
-       
-        // OK
+        // LOGIN: Método de login SIMULADO (sin backend)
         const login = async (userData) => {
-            try {
-                const response = await fetch(`${VITE_API_URL}/login`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(userData)
-                });
-        
-                if (!response.ok) {
-                    throw new Error('Error en las credenciales');  // CAMBIO AQUÍ
+            // Simular una respuesta exitosa sin hacer un fetch a un backend
+            const responseData = {                                 
+                data: { 
+                    email: userData.email, 
+                    name: "Nombre Del Usuario",  // (se simula un nombre)
+                    image: 'https://picsum.photos/200'  //(imagen simulada)
                 }
+            };
         
-                const responseData = await response.json();  // CAMBIO AQUÍ
+            const usuario = responseData.data;
         
-                setUser(responseData);  // CAMBIO AQUÍ
-                localStorage.setItem("user", JSON.stringify(responseData));  // CAMBIO AQUÍ
-            } catch (error) {
-                console.error("Error en login:", error);  // CAMBIO AQUÍ
-                throw error;  // CAMBIO AQUÍ
-            }
-        };        
+            // Fijamos nuestro user (simulado)
+            setUser(usuario);                                      
+            localStorage.setItem('user', JSON.stringify(usuario));
+        
+            return null; // No hay error
+        };
+
+       
+        // LOGIN: Método con FETCH AL BACKEND
+        // const login = async (userData) => {
+        //     try {
+        //         const response = await fetch(`${VITE_API_URL}/login`, {
+        //             method: 'POST',
+        //             headers: { 'Content-Type': 'application/json' },
+        //             body: JSON.stringify(userData)
+        //         });
+
+        //         const responseData = await response.json();
+        
+        //         if (!response.ok) {
+        //             return responseData.message; // ('Error en las credenciales')
+        //         }
+        
+        //         // 1º extraemos el usuario de la respuesta
+        //         const usuario=responseData.data;
+
+        //         // 2º fijamos nuestro user
+        //         setUser(usuario);
+
+        //         // 3º guardamos usuario en LOCALSTORAGE
+        //         localStorage.setItem('user', JSON.stringify(usuario));
+
+        //             // 4º Guardamos el JWT token en LocalStorage
+        //             // localStorage.setItem('token', responseData.token);
+
+        //         return null; // no hay error
+
+        //     } catch (error) {
+        //         console.error("Error en login:", error); 
+        //         return  "Error en el seervidor";
+        //     }
+        // };        
 
 
         // const register = async (userData) => {
-        //     console.log("Estoy en registro")
 
         //     const response = await fetch(`${VITE_API_URL}/registro`, {
         //         method: 'POST',
@@ -96,23 +99,55 @@ export function UserProvider({children}) {
 
         // };
 
-        // 2ª opción REGISTER
-        const register = (userData) => {  // CAMBIO AQUÍ
-            console.log("Estoy en registro");
-            setUser(userData);  // CAMBIO AQUÍ
-            localStorage.setItem('user', JSON.stringify(userData));  // CAMBIO AQUÍ
+/*_______________________________________________________________________________*/
+
+        // REGISTRO:Método con FETCH AL BACKEND
+        const register = async (userData) => {
+
+            try {
+            // Aquí enviamos los datos a nuestro backend
+            // y recibiríamos la respuesta antes de establecer el usuario
+    
+            const response = await fetch(`${VITE_API_URL}/api/v1/register`, {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userData)
+            });
+            // 1º: parsear la respuesta a JSON
+            const responseData = await response.json();
+            if (!response.ok) {
+                return responseData.message;
+            }
+    
+            // 2º  convertir la respuesta en usuario
+            const usuario=responseData.data;
+    
+            // 3º fijamos el usuario
+            setUser(usuario);
+    
+            // 4º Guardamos el Usuario en LocalStorage
+            localStorage.setItem('user', JSON.stringify(usuario));
+            
+            // Guardamos el JWT token en LocalStorage
+            localStorage.setItem('token', responseData.token);
+    
+            return null; // no hay error
+            } catch (error) {
+            console.error('Error:', error);
+            return "Error en el servidor";
+            }
         };
-
-
 
 
 
         const logout = () => {
             console.log("Estoy en salir");
+
+            setUser(null);                      // borrar el user fijado
             localStorage.removeItem("user");    // borrar item user
-            setUser(null);                      // borrar item user
-
-
+            localStorage.removeItem("token");    // borrar token user
 
         }
 

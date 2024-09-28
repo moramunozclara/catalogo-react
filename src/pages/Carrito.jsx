@@ -1,11 +1,13 @@
 import { useContext } from "react";
-import { CarritoContext } from "../Layout"; // tomamos el contexto
+import { useCarrito } from '../hooks/useCarrito';
+
 
 
 
 const Carrito = () => {
-    // const { carrito } = useContext(CarritoContext); 
-    const { carrito, agregarCarrito, eliminarDelCarrito } = useContext(CarritoContext);
+    // const { carrito } = useContext(useCarrito); 
+    const { carrito, setCarrito, agregarCarrito, eliminarDelCarrito } = useCarrito(); 
+
 
 
     return ( 

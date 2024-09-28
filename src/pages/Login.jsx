@@ -1,19 +1,15 @@
-import { useState } from 'react';
-
-
-import {Input} from '../components/FormComponents';
-
+import { useState, useEffect } from 'react';
 import {BrowserRouter as Router, Route, Link, NavLink, Routes} from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
-
 import { useUser } from '../hooks/useUser';
+import {Input} from '../components/FormComponents';
 
 
 const Login = () => {
 
     const navigate = useNavigate();
 
-    const { login } = useUser(); 
+    const { login, user } = useUser(); 
 
 
     // __________________________________________
@@ -23,48 +19,19 @@ const Login = () => {
             email: "",
             password: "",
         });
-        const [errores, setErrores] = useState ({});
+        const [errores, setErrores] = useState (null);
+
+    // si entran a /login y ya están logueados, los redirigimos a /home
+    useEffect(() => {
+        if (user) {  navigate('/');  }
+    }, [user]);
     
     // ---------------------------------------
 
-        const handleSubmit = (e) => {
-            e.preventDefault();
-            const listaErrores = validateLoginForm();
-    
-            // si existe algún error, guardarlo en errores
-            // si no, mostrar resultado por consola Y EJECUTAR LOGIN
-    
-            // INFORME DE LOS DATOS EN LA CONSOLA CUANDO NO HAYA ERRORES
-            if( Object.keys(listaErrores).length === 0 ){
-                console.log("Datos del formulario:", formData);
-                            
-                // función login para actualizar el estado de 'user'
-                login(formData)  // Actualiza el estado con los datos del usuario                
-                .then(() => {
-                    navigate('/catalogo');  // CAMBIO AQUÍ
-                })
-                .catch((error) => {
-                    setErrores({ email: "Credenciales inválidas", password: "" });  // CAMBIO AQUÍ
-                });
 
-            } else {
-                // AVISO EN LA CONSOLA CUANDO HAYA UN ERROR ((NO LO VERÁ EL USUARIO))
-                    console.log("Errores encontrados:", listaErrores);
-                    setErrores(listaErrores);
-
-                }
-        }
-
-    
         const handleChange = (e) => {
             const {name, value} = e.target;
-    
 
-            // if(e.target.type === "checkbox"){
-            //     value = e.target.checked;
-            //     console.log("Checkbox value es:", value);
-            // }
-    
             setFormData({ ...formData, [name]:value });
 
             // setFormData( prevData => ({ ...prevData, [name]: value}));
@@ -72,16 +39,43 @@ const Login = () => {
             // setErrores( prevErrores => ({ ...prevErrores, [name]: ""}))
         }
 
-        
-        const validateLoginForm = () => {
-            const objetoErrores = {};
-            // hacer nuestras comprobaciones.
-            if(!formData.user) objetoErrores.user="Debes ingresar un usuario";
-            if(!formData.password) objetoErrores.password="Debes ingresar una contraseña";    
-    
-            else { navigate('/catalogo') }
-            return objetoErrores;
+        const handleSubmit = async (e) => {
+            e.preventDefault();
+
+            const listaErrores = await login(formData);
+
+            if (listaErrores) { setErrores(listaErrores); }
+
+            else {setErrores(null); }
         }
+
+    
+        //     // si existe algún error, guardarlo en errores
+        //     // si no, mostrar resultado por consola Y EJECUTAR LOGIN
+    
+        //     // INFORME DE LOS DATOS EN LA CONSOLA CUANDO NO HAYA ERRORES
+        //     if( Object.keys(listaErrores).length === 0 ){
+        //         console.log("Datos del formulario:", formData);
+                            
+        //         // función login para actualizar el estado de 'user'
+        //         login(formData)  // Actualiza el estado con los datos del usuario                
+        //         .then(() => {
+        //             navigate('/catalogo');  // CAMBIO AQUÍ
+        //         })
+        //         .catch((error) => {
+        //             setErrores({ email: "Credenciales inválidas", password: "" });  // CAMBIO AQUÍ
+        //         });
+
+        //     } else {
+        //         // AVISO EN LA CONSOLA CUANDO HAYA UN ERROR ((NO LO VERÁ EL USUARIO))
+        //             console.log("Errores encontrados:", listaErrores);
+        //             setErrores(listaErrores);
+        //         }
+        // }
+    
+
+
+    
     
 
         // const {login, user}=useUser();
@@ -102,7 +96,8 @@ const Login = () => {
                 value={formData.email}
                 onChange={handleChange}
 
-                error={errores.email}
+                error={errores}
+                required
                 className="textRed"
                 // debug={true}
             />
@@ -116,7 +111,8 @@ const Login = () => {
                 
                 value={formData.password}
                 onChange={handleChange}
-                error={errores.password}
+                error={errores}
+                required
                 //debug={true}
             />
 

@@ -35,8 +35,8 @@ const router = createBrowserRouter([{
             element: <Login/>
         },
         {
-            path: 'home', //los children van sin barra pq ya trae path
-            element: <Home/>
+            path: 'catalogo', //los children van sin barra pq ya trae path
+            element: <Catalogo/>
         },
         {
             path: 'login', //los children van sin barra pq ya trae path
@@ -62,8 +62,8 @@ const router = createBrowserRouter([{
             element: <Catalogo/>
         },
         {
-            // COLOCAR LUEGO DE NUEVO path: 'producto/:productoId',
-            path: 'producto',
+            // producto individual
+            path: 'producto/:productoId',
             element: <Producto/>
         },
         {

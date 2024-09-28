@@ -152,5 +152,9 @@ input {
   gap: 0.5rem;
   width: 100%;
 
-;
 } 
+
+.ProfilePictureThumbnail {
+  border-radius: 1000px;
+  height: 3rem;
+}

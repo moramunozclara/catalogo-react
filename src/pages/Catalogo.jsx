@@ -2,10 +2,16 @@
 // import { useState } from 'react'
 import {useState, useEffect, useContext} from 'react';
 import Producto from './Producto';
-import { CarritoContext } from '../Layout';
+// import { CarritoContext } from '../Layout';
+import { useCarrito } from '../hooks/useCarrito';
+
 
 // sfc
 const Catalogo = () => {
+
+    const { carrito, setCarrito, agregarCarrito, eliminarDelCarrito } = useCarrito(); 
+
+
     const [productos, setProductos] = useState([]);
 
     const [nuevoProducto, setNuevoProducto] = useState({
@@ -14,7 +20,7 @@ const Catalogo = () => {
         servicesList: {}
     });
 
-    const { carrito, agregarCarrito, eliminarDelCarrito } = useContext(CarritoContext);
+
     // const [filtro, setFiltro] = useState("");
 
     const [errores, setErrores] = useState("");
