@@ -11,7 +11,7 @@ export function UserProvider({children}) {
     
         const [user, setUser] = useState(null);
 
-        const {VITE_API_URL} = import.meta.env;  // CAMBIO AQUÍ. por que con llaves???
+        const {VITE_API_URL} = import.meta.env;
 
         // Al cargar la aplicación, intentamos obtener el usuario del localStorage
         useEffect(() => {
@@ -23,61 +23,61 @@ export function UserProvider({children}) {
 
 /*______________________________________________________________________________*/
 
-        // LOGIN: Método de login SIMULADO (sin backend)
-        const login = async (userData) => {
-            // Simular una respuesta exitosa sin hacer un fetch a un backend
-            const responseData = {                                 
-                data: { 
-                    email: userData.email, 
-                    name: "Nombre Del Usuario",  // (se simula un nombre)
-                    image: 'https://picsum.photos/200'  //(imagen simulada)
-                }
-            };
+        // // LOGIN: Método de login SIMULADO (sin backend)
+        // const login = async (userData) => {
+        //     // Simular una respuesta exitosa sin hacer un fetch a un backend
+        //     const responseData = {                                 
+        //         data: { 
+        //             email: userData.email, 
+        //             name: "Nombre Del Usuario",  // (se simula un nombre)
+        //             image: 'https://picsum.photos/200'  //(imagen simulada)
+        //         }
+        //     };
         
-            const usuario = responseData.data;
+        //     const usuario = responseData.data;
         
-            // Fijamos nuestro user (simulado)
-            setUser(usuario);                                      
-            localStorage.setItem('user', JSON.stringify(usuario));
+        //     // Fijamos nuestro user (simulado)
+        //     setUser(usuario);                                      
+        //     localStorage.setItem('user', JSON.stringify(usuario));
         
-            return null; // No hay error
-        };
+        //     return null; // No hay error
+        // };
 
        
         // LOGIN: Método con FETCH AL BACKEND
-        // const login = async (userData) => {
-        //     try {
-        //         const response = await fetch(`${VITE_API_URL}/login`, {
-        //             method: 'POST',
-        //             headers: { 'Content-Type': 'application/json' },
-        //             body: JSON.stringify(userData)
-        //         });
+        const login = async (userData) => {
+            try {
+                const response = await fetch(`${VITE_API_URL}/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(userData)
+                });
 
-        //         const responseData = await response.json();
+                const responseData = await response.json();
         
-        //         if (!response.ok) {
-        //             return responseData.message; // ('Error en las credenciales')
-        //         }
+                if (!response.ok) {
+                    return responseData.message; // ('Error en las credenciales')
+                }
         
-        //         // 1º extraemos el usuario de la respuesta
-        //         const usuario=responseData.data;
+                // 1º extraemos el usuario de la respuesta
+                const usuario=responseData.data;
 
-        //         // 2º fijamos nuestro user
-        //         setUser(usuario);
+                // 2º fijamos nuestro user
+                setUser(usuario);
 
-        //         // 3º guardamos usuario en LOCALSTORAGE
-        //         localStorage.setItem('user', JSON.stringify(usuario));
+                // 3º guardamos usuario en LOCALSTORAGE
+                localStorage.setItem('user', JSON.stringify(usuario));
 
-        //             // 4º Guardamos el JWT token en LocalStorage
-        //             // localStorage.setItem('token', responseData.token);
+                    // 4º Guardamos el JWT token en LocalStorage
+                    localStorage.setItem('token', responseData.token);
 
-        //         return null; // no hay error
+                return null; // no hay error
 
-        //     } catch (error) {
-        //         console.error("Error en login:", error); 
-        //         return  "Error en el seervidor";
-        //     }
-        // };        
+            } catch (error) {
+                console.error("Error en login:", error); 
+                return  "Error en el seervidor";
+            }
+        };        
 
 
         // const register = async (userData) => {
@@ -141,6 +141,29 @@ export function UserProvider({children}) {
         };
 
 
+        // Método para obtener usuarios
+        const fetchUsers = async () => {
+            try {
+                const token = localStorage.getItem('token'); // Obtiene el token del localStorage
+                const response = await fetch(`${VITE_API_URL}/api/v1/users`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`, // Incluye el token en la cabecera
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                if (!response.ok) {
+                    throw new Error('Error al obtener usuarios');
+                }
+
+                const usersData = await response.json(); // Analiza la respuesta a JSON
+                return usersData; // Retorna la lista de usuarios
+            } catch (error) {
+                console.error('Error en fetchUsers:', error);
+                return null; // O maneja el error como desees
+            }
+        };
 
         const logout = () => {
             console.log("Estoy en salir");
@@ -152,7 +175,7 @@ export function UserProvider({children}) {
         }
 
  return (
-        <UserContext.Provider value={{user, login, register, logout}}>
+        <UserContext.Provider value={{user, login, register, logout, fetchUsers}}>
         {children}
         </UserContext.Provider>
  );
